@@ -42,9 +42,11 @@ fun onBoarding3(
         modifier = Modifier.fillMaxSize().
         background(Color(0xFF853CFF)).
         padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        Spacer(modifier = Modifier.height(80.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -68,7 +70,7 @@ fun onBoarding3(
             }
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(26.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -98,11 +100,11 @@ fun onBoarding3(
                 color = Color.White)
         }
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(37.dp))
 
         Image(painter = painterResource(R.drawable.onboarding3_logo), contentDescription = "")
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(30.dp))
 
         Text("Tulis perasaanmu dalam Journaling pribadi dan biarkan Chatbot AI mendengarkan tanpa menghakimi. Ini adalah tempat di mana kamu bisa menjadi dirimu sendiri.",
             fontFamily = localFontFamily,
@@ -111,7 +113,7 @@ fun onBoarding3(
             color = Color.White,
             textAlign = TextAlign.Center)
 
-        Spacer(modifier = Modifier.height(66.5.dp))
+        Spacer(modifier = Modifier.height(79.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth()

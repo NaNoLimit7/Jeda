@@ -47,9 +47,11 @@ fun onBoarding2(
         modifier = Modifier.fillMaxSize().
         background(Color(0xFF853CFF)).
         padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        Spacer(modifier = Modifier.height(80.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -73,7 +75,7 @@ fun onBoarding2(
             }
         }
 
-        Spacer(modifier = Modifier.height(14.dp))
+        Spacer(modifier = Modifier.height(22.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -102,11 +104,11 @@ fun onBoarding2(
                 color = Color(0xFF853CFF))
         }
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(35.dp))
 
         Image(painter = painterResource(R.drawable.onboarding2_logo), contentDescription = "")
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(30.dp))
 
         Text("Dengan Emotional Tracker, kamu bisa melacak dan melihat perkembangan perasaanmu dari waktu ke waktu. Kenali pola mood mu dan temukan apa yang memengaruhinya.",
             fontFamily = localFontFamily,
@@ -115,7 +117,7 @@ fun onBoarding2(
             color = Color.White,
             textAlign = TextAlign.Center)
 
-        Spacer(modifier = Modifier.height(33.5.dp))
+        Spacer(modifier = Modifier.height(56.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth()

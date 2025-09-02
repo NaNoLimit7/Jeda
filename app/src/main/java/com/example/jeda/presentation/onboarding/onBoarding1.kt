@@ -40,27 +40,6 @@ fun onBoarding1(
     authViewModel: AuthViewModel
 
 ) {
-    val context = LocalContext.current
-    val authState = authViewModel.authState.observeAsState()
-
-    LaunchedEffect(authState.value) {
-        when(authState.value){
-            is AuthState.Authenticated -> {
-                Toast.makeText(
-                    context,
-                    "Logging in...",
-                    Toast.LENGTH_SHORT
-                ).show()
-                navController.navigate("HomeScreen")
-            }
-            is AuthState.Error -> Toast.makeText(
-                context,
-                (authState.value as AuthState.Error).message, Toast.LENGTH_SHORT
-            ).show()
-            else -> Unit
-        }
-    }
-
     Column(
         modifier = Modifier.fillMaxSize().
         background(Color(0xFF853CFF)).

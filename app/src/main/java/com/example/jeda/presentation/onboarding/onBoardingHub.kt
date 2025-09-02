@@ -37,13 +37,19 @@ fun onBoardingHub(navController: NavController) {
                     verticalArrangement = Arrangement.Center) {
                     when(pagerState.currentPage){
                         0 -> {
-                            onBoarding2(navController)
+                            onBoarding2(
+                                navController
+                            )
                         }
                         1 -> {
-                            onBoarding3(navController)
+                            onBoarding3(
+                                navController
+                            )
                         }
                         2 -> {
-                            onBoarding4(navController)
+                            onBoarding4(
+                                navController
+                            )
                         }
                     }
                 }

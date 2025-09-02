@@ -74,7 +74,7 @@ fun LoginScreen(
                     "Logging in...",
                     Toast.LENGTH_SHORT
                 ).show()
-                navController.navigate("HomeScreen")
+                navController.navigate("MainBottomNav")
             }
             is AuthState.Error -> Toast.makeText(
                 context,

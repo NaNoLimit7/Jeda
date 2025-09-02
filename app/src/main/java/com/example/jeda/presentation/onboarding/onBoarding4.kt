@@ -42,33 +42,11 @@ fun onBoarding4(
         modifier = Modifier.fillMaxSize().
         background(Color(0xFF853CFF)).
         padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.End
-        ) {
-            Button(
-                modifier = Modifier.height(36.dp)
-                    .width(92.dp),
-                onClick = {
-                    navController.navigate("LoginScreen")
-                },
-                border = BorderStroke(width = 1.dp, color = Color.Black),
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(Color.Transparent)
-            ) {
-                Text("Lewati",
-                    fontFamily = localFontFamily,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 13.sp,
-                    color = Color.Black)
-            }
-        }
-
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(142.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -92,11 +70,11 @@ fun onBoarding4(
                 color = Color.White)
         }
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(37.dp))
 
         Image(painter = painterResource(R.drawable.onboarding4_logo), contentDescription = "")
 
-        Spacer(modifier = Modifier.height(84.5.dp))
+        Spacer(modifier = Modifier.height(56.02.dp))
 
         Text("Siap untuk memulai?",
             fontFamily = localFontFamily,
@@ -105,7 +83,7 @@ fun onBoarding4(
             color = Color.White,
             textAlign = TextAlign.Center)
 
-        Spacer(modifier = Modifier.height(48.5.dp))
+        Spacer(modifier = Modifier.height(93.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -146,9 +124,14 @@ fun onBoarding4(
                 )
             }
 
-            Icon(painter = painterResource(R.drawable.onboarding_button),
+            Icon(painter = painterResource(R.drawable.button_selesai),
                 contentDescription = "",
-                tint = Color(0xFF853CFF)
+                tint = Color.Unspecified,
+                modifier = Modifier.clickable(
+                    onClick = {
+                        navController.navigate("LoginScreen")
+                    }
+                ),
             )
         }
     }
