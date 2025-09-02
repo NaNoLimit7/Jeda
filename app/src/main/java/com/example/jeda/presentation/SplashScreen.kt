@@ -37,11 +37,11 @@ fun SplashScreen(navController: NavController) {
             )
         )
         delay(2000L)
-        navController.navigate("LoginScreen")
+        navController.navigate("onBoarding1")
     }
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(Color.White),
+        .background(Color(0xFF853CFF)),
         contentAlignment = Alignment.Center
         ){
         Image(painter = painterResource(R.drawable.logo_jeda),

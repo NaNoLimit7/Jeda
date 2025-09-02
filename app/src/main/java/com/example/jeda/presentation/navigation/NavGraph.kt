@@ -9,6 +9,11 @@ import com.example.jeda.presentation.registration.LoginScreen
 import com.example.jeda.presentation.registration.SignUpScreen
 import com.example.jeda.presentation.SplashScreen
 import com.example.jeda.presentation.home.HomeScreen
+import com.example.jeda.presentation.onboarding.onBoarding1
+import com.example.jeda.presentation.onboarding.onBoarding2
+import com.example.jeda.presentation.onboarding.onBoarding3
+import com.example.jeda.presentation.onboarding.onBoarding4
+import com.example.jeda.presentation.onboarding.onBoardingHub
 
 @Composable
 fun NavGraph(authViewModel: AuthViewModel) {
@@ -32,6 +37,30 @@ fun NavGraph(authViewModel: AuthViewModel) {
                 navController, authViewModel
             )
         }
+        composable("onBoardingHub") {
+            onBoardingHub(
+                navController
+            )
+        }
+        composable("onBoarding1") {
+            onBoarding1(
+                navController, authViewModel
+            )
+        }
+        composable("onBoarding2") {
+            onBoarding2(
+                navController
+            )
+        }
+        composable("onBoarding3") {
+            onBoarding3(
+                navController
+            )
+        }
+        composable("onBoarding4") {
+            onBoarding4(
+                navController
+            )
+        }
     }
-
 }

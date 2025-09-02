@@ -255,17 +255,22 @@ fun SignUpScreen(
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
             ) {
                 Image(painter = painterResource(R.drawable.line), contentDescription = "")
 
                 Spacer(Modifier.width(4.dp))
+
                 Text(
                     "Atau",
                     fontFamily = localFontFamily,
                     fontWeight = FontWeight.Companion.Normal,
                     fontSize = 13.sp
                 )
+
+                Spacer(Modifier.width(4.dp))
+
                 Image(painter = painterResource(R.drawable.line), contentDescription = "")
             }
 
