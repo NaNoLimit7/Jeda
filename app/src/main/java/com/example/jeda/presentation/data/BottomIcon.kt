@@ -17,7 +17,7 @@ sealed class BottomBar(
     )
 
     object Bot: BottomBar(
-        route = "BotScreen",
+        route = "onBoardingBot1",
         title = "Nala",
         icon = R.drawable.bot_icon,
         icon_focused = R.drawable.bot_black

@@ -11,7 +11,9 @@ import com.example.jeda.presentation.data.BottomBar
 import com.example.jeda.presentation.home.BotScreen
 import com.example.jeda.presentation.home.HomeScreen
 import com.example.jeda.presentation.home.JournalScreen
+import com.example.jeda.presentation.home.MoodScreen
 import com.example.jeda.presentation.home.UserScreen
+import com.example.jeda.presentation.home.onBoardingBot1
 import com.example.jeda.presentation.registration.LoginScreen
 
 @Composable
@@ -19,6 +21,7 @@ fun BottomNavGraph(
     navController: NavHostController,
     authViewModel: AuthViewModel
 ) {
+//    val navController = rememberNavController()
     NavHost(
         navController = navController,
         startDestination = BottomBar.Home.route
@@ -27,13 +30,24 @@ fun BottomNavGraph(
             HomeScreen( navController, authViewModel)
         }
         composable(route = BottomBar.Bot.route){
-            BotScreen( navController)
+            onBoardingBot1( navController)
         }
         composable(route = BottomBar.Journal.route){
             JournalScreen( navController)
         }
         composable(route = BottomBar.User.route){
             UserScreen( navController)
+        }
+        composable("onBoardingBot1"){
+            onBoardingBot1( navController)
+        }
+        composable("chat/{mood}"){ backStack ->
+            val mood = backStack.arguments?.getString("mood") ?: "Netral"
+            BotScreen(navController, userMood = mood)
+        }
+        composable("MoodScreen"){
+            MoodScreen(navController){ mood ->
+                navController.navigate("chat/$mood")}
         }
     }
 }

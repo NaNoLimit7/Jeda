@@ -42,8 +42,15 @@ import com.example.jeda.presentation.navigation.BottomNavGraph
 fun MainBottomNav(navController: NavController, authViewModel: AuthViewModel) {
     val navController = rememberNavController()
 
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination?.route
+
     Scaffold(
-        bottomBar = { BottomNavBar(navController)}
+        containerColor = Color(0xFF853CFF),
+        bottomBar = {
+            if (currentDestination !in listOf("onBoardingBot1", "MoodScreen","chat/{mood}")) {
+                BottomNavBar(navController)
+            }}
     ) { innerPadding ->
         Box(modifier = Modifier
             .padding(innerPadding)
