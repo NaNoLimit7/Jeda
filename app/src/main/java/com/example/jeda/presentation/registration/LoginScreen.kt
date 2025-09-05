@@ -87,18 +87,13 @@ fun LoginScreen(
     Column(
         modifier = Modifier.Companion
             .fillMaxSize()
-            .background(color = Color.Companion.White),
+            .background(color = Color.White),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Companion.CenterHorizontally
     ) {
-        Text(
-            "Logo",
-            fontFamily = localFontFamily,
-            fontWeight = FontWeight.Companion.Bold,
-            fontSize = 25.sp
-        )
+        Image(painter = painterResource(R.drawable.jedamini_logo), contentDescription = "")
 
-        Spacer(Modifier.Companion.height(38.dp))
+        Spacer(Modifier.Companion.height(8.dp))
 
         Text(
             "Selamat datang kembali!",
@@ -120,7 +115,7 @@ fun LoginScreen(
 
         Column(
             modifier = Modifier.Companion
-                .background(color = Color.Companion.White)
+                .background(color = Color.White)
                 .padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Companion.CenterHorizontally
@@ -186,6 +181,19 @@ fun LoginScreen(
                 shape = RoundedCornerShape(12.dp)
             )
 
+            Spacer(Modifier.Companion.height(16.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "Lupa kata sandi?",
+                    fontFamily = localFontFamily,
+                    fontWeight = FontWeight.Companion.Normal,
+                    fontSize = 13.sp
+                )
+            }
             Spacer(Modifier.Companion.height(16.dp))
 
             Button(

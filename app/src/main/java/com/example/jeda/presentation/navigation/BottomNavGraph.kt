@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.jeda.data.firebase.ViewModel.AuthViewModel
+import com.example.jeda.data.gemini.ViewModel.ChatViewModel
 import com.example.jeda.presentation.data.BottomBar
 import com.example.jeda.presentation.home.BotScreen
 import com.example.jeda.presentation.home.HomeScreen
@@ -19,7 +20,8 @@ import com.example.jeda.presentation.registration.LoginScreen
 @Composable
 fun BottomNavGraph(
     navController: NavHostController,
-    authViewModel: AuthViewModel
+    authViewModel: AuthViewModel,
+    chatViewModel: ChatViewModel
 ) {
 //    val navController = rememberNavController()
     NavHost(
@@ -41,9 +43,13 @@ fun BottomNavGraph(
         composable("onBoardingBot1"){
             onBoardingBot1( navController)
         }
-        composable("chat/{mood}"){ backStack ->
-            val mood = backStack.arguments?.getString("mood") ?: "Netral"
-            BotScreen(navController, userMood = mood)
+        composable("BotScreen"){ backStack ->
+//            val mood = backStack.arguments?.getString("mood") ?: "Netral"
+            BotScreen(
+                navController,
+//                userMood = mood,
+                chatViewModel
+            )
         }
         composable("MoodScreen"){
             MoodScreen(navController){ mood ->

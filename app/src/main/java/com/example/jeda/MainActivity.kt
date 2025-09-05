@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jeda.data.firebase.ViewModel.AuthViewModel
+import com.example.jeda.data.gemini.ViewModel.ChatViewModel
 import com.example.jeda.presentation.navigation.NavGraph
 import com.example.jeda.ui.theme.JedaTheme
 
@@ -23,8 +24,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val authViewModel: AuthViewModel by viewModels()
+        val chatViewModel = ViewModelProvider(this)[ChatViewModel::class.java]
         setContent {
-            NavGraph(authViewModel = authViewModel)
+            NavGraph(
+                authViewModel = authViewModel,
+                chatViewModel)
         }
     }
 }

@@ -35,11 +35,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.jeda.data.firebase.ViewModel.AuthViewModel
+import com.example.jeda.data.gemini.ViewModel.ChatViewModel
 import com.example.jeda.presentation.data.BottomBar
 import com.example.jeda.presentation.navigation.BottomNavGraph
 
 @Composable
-fun MainBottomNav(navController: NavController, authViewModel: AuthViewModel) {
+fun MainBottomNav(navController: NavController, authViewModel: AuthViewModel, chatViewModel: ChatViewModel) {
     val navController = rememberNavController()
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -48,14 +49,14 @@ fun MainBottomNav(navController: NavController, authViewModel: AuthViewModel) {
     Scaffold(
         containerColor = Color(0xFF853CFF),
         bottomBar = {
-            if (currentDestination !in listOf("onBoardingBot1", "MoodScreen","chat/{mood}")) {
+            if (currentDestination !in listOf("onBoardingBot1", "MoodScreen","BotScreen")) {
                 BottomNavBar(navController)
             }}
     ) { innerPadding ->
         Box(modifier = Modifier
             .padding(innerPadding)
         ){
-            BottomNavGraph(navController = navController, authViewModel = authViewModel)
+            BottomNavGraph(navController = navController, authViewModel = authViewModel, chatViewModel = chatViewModel)
         }
     }
 }

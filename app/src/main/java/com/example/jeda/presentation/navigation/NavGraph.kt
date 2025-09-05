@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.jeda.data.firebase.ViewModel.AuthViewModel
+import com.example.jeda.data.gemini.ViewModel.ChatViewModel
 import com.example.jeda.presentation.registration.LoginScreen
 import com.example.jeda.presentation.registration.SignUpScreen
 import com.example.jeda.presentation.SplashScreen
@@ -17,7 +18,7 @@ import com.example.jeda.presentation.onboarding.onBoarding4
 import com.example.jeda.presentation.onboarding.onBoardingHub
 
 @Composable
-fun NavGraph(authViewModel: AuthViewModel) {
+fun NavGraph(authViewModel: AuthViewModel, chatViewModel: ChatViewModel) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "SplashScreen") {
         composable("SplashScreen") {
@@ -35,7 +36,7 @@ fun NavGraph(authViewModel: AuthViewModel) {
         }
         composable("MainBottomNav") {
             MainBottomNav(
-                navController, authViewModel
+                navController, authViewModel, chatViewModel
             )
         }
         composable("onBoardingHub") {

@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,6 +22,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -86,18 +88,13 @@ fun SignUpScreen(
     Column(
         modifier = Modifier.Companion
             .fillMaxSize()
-            .background(color = Color.Companion.White),
+            .background(color = Color.White),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Companion.CenterHorizontally
     ) {
-        Text(
-            "Logo",
-            fontFamily = localFontFamily,
-            fontWeight = FontWeight.Companion.Bold,
-            fontSize = 25.sp
-        )
+        Image(painter = painterResource(R.drawable.jedamini_logo), contentDescription = "")
 
-        Spacer(Modifier.Companion.height(38.dp))
+        Spacer(Modifier.Companion.height(8.dp))
 
         Text(
             "Bergabunglah bersama kami!",
@@ -119,7 +116,7 @@ fun SignUpScreen(
 
         Column(
             modifier = Modifier.Companion
-                .background(color = Color.Companion.White)
+                .background(color = Color.White)
                 .padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Companion.CenterHorizontally

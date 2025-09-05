@@ -108,8 +108,8 @@ fun MoodScreen(
         Button(
             modifier = Modifier.fillMaxWidth().height(48.dp),
             onClick = {
-                selectedMood?.let { onMoodSelected(it) }
-                navController.navigate("chat/{mood}") },
+//                selectedMood?.let { onMoodSelected(it) }
+                navController.navigate("BotScreen") },
             enabled = selectedMood != null,
             colors = ButtonDefaults.buttonColors(
                 containerColor = if (selectedMood != null) Color.Black else Color.Gray

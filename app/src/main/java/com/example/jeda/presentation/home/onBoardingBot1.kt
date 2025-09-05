@@ -2,6 +2,7 @@ package com.example.jeda.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.jeda.R
+import com.example.jeda.presentation.data.BottomBar
 import com.example.jeda.ui.theme.localFontFamily
 
 //@Preview
@@ -35,7 +37,7 @@ fun onBoardingBot1(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF853CFF))
-            .padding(start = 20.dp, end = 20.dp,top = 60.dp, bottom = 30.dp)
+            .padding(start = 20.dp, end = 20.dp,top = 5.dp, bottom = 30.dp)
     ) {
         Row(
             modifier = Modifier
@@ -43,7 +45,12 @@ fun onBoardingBot1(
                 .height(64.dp)
                 .padding(vertical = 20.dp)
         ) {
-            Icon(painter = painterResource(R.drawable.left_arrow_icon), contentDescription = "")
+            Icon(painter = painterResource(R.drawable.left_arrow_icon),
+                contentDescription = "",
+                modifier = Modifier.clickable( onClick = {
+                    navController.navigate(BottomBar.Home.route)
+                }
+                ))
         }
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -58,7 +65,7 @@ fun onBoardingBot1(
 
         Image(painter = painterResource(R.drawable.onboardingchat_logo), contentDescription = "")
 
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(47.dp))
 
         Button(
             modifier = Modifier.fillMaxWidth()
