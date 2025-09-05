@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jeda.data.Constants
+import com.example.jeda.data.gemini.UseCase.containsSadKeyword
 import com.example.jeda.data.gemini.dataclass.MessageModel
 import com.example.jeda.presentation.home.MessageList
 import com.google.ai.client.generativeai.GenerativeModel
@@ -17,25 +18,60 @@ class ChatViewModel : ViewModel(){
         mutableStateListOf<MessageModel>()
     }
 
+    var userMood: String? = null
+
     val model = GenerativeModel(
         modelName = "gemini-2.5-pro",
         apiKey = Constants.apikey
     )
 
+    fun updateUserMood(mood: String){
+        userMood = mood
+
+        messageList.add(
+            MessageModel(
+                "Aku merasa $mood hari ini.",
+                "user"
+            )
+        )
+        messageList.add(
+            MessageModel(
+                "Terima kasih sudah berbagi perasaanmu. Aku akan menyesuaikan jawabanku sesuai dengan moodmu.",
+                "model"
+            )
+        )
+    }
+
     fun sendMessage(question: String){
         viewModelScope.launch {
 
             try {
+            messageList.add(MessageModel(question, "user"))
+            messageList.add(MessageModel("Typing...", "model"))
+
+            if (containsSadKeyword(question)){
+                messageList.removeAt(messageList.lastIndex)
+                messageList.add(
+                    MessageModel(
+                        "Saya mendengar kamu sedang merasa sedih. Tidak apa-apa untuk merasakan itu. Saya menyarankan kamu untuk berbicara dengan seorang psikolog agar mendapatkan dukungan lebih lanjut.",
+                        "model"
+                    )
+                )
+                return@launch
+            }
             val chat = model.startChat(
                 history = messageList.map {
                     content(it.sender) { text(it.message) }
                 }.toList()
             )
 
-            messageList.add(MessageModel(question, "user"))
-            messageList.add(MessageModel("Typing...", "model"))
+            val moodPrompt = if (userMood != null){
+                "User sedang merasa: $userMood.\nPertanyaan user: $question"
+            }else {
+                question
+            }
 
-            val response = chat.sendMessage(question)
+            val response = chat.sendMessage(moodPrompt)
             messageList.removeAt(messageList.lastIndex)
             messageList.add(MessageModel(response.text.toString(), "model"))
             }catch (e : Exception){
@@ -47,21 +83,4 @@ class ChatViewModel : ViewModel(){
     }
 
 }
-//    fun sendMessage(userMood: String, userMessage: String, onReply: (String) -> Unit) {
-//        viewModelScope.launch {
-//            val prompt = """
-//                User sedang merasa: $userMood
-//                Pertanyaan user: $userMessage
-//                Jawablah dengan ramah, empatik, dan sesuai konteks emosinya.
-//            """.trimIndent()
-//
-//            val reply = try {
-//                val response = model.generateContent(prompt)
-//                response.text ?: "Maaf, saya tidak bisa menjawab."
-//            } catch (e: Exception) {
-//                "Maaf, terjadi error saat menjangkau layanan AI."
-//            }
-//            onReply(reply)
-//        }
-//    }
 

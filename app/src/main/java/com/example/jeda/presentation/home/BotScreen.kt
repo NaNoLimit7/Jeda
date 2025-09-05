@@ -52,8 +52,6 @@ import androidx.navigation.NavController
 import com.example.jeda.R
 import com.example.jeda.data.gemini.UseCase.containsSadKeyword
 import com.example.jeda.data.gemini.ViewModel.ChatViewModel
-//import com.example.jeda.data.gemini.ViewModel.getGeminiReply
-//import com.example.jeda.data.gemini.dataclass.ChatMessage
 import com.example.jeda.data.gemini.dataclass.MessageModel
 import com.example.jeda.presentation.data.BottomBar
 import com.example.jeda.ui.theme.localFontFamily
@@ -63,13 +61,8 @@ import kotlin.collections.listOf
 @Composable
 fun BotScreen(
     navController: NavController,
-//    userMood: String,
     chatViewModel: ChatViewModel
     ) {
-//    val chatViewModel: ChatViewModel = viewModel()
-//    var chatHistory by remember { mutableStateOf(listOf<ChatMessage>()) }
-//    var inputText by remember { mutableStateOf("") }
-//    val scope = rememberCoroutineScope()
 
     Column(
         modifier = Modifier
@@ -219,87 +212,3 @@ fun BotScreenHeader(navController: NavController) {
         Image(painter = painterResource(R.drawable.botscreen2_logo), contentDescription = "")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        LazyColumn (
-//            modifier = Modifier.weight(1f),
-//            reverseLayout = true
-//        ){
-//            items(chatHistory.reversed()) { msg ->
-//                Box(
-//                    modifier = Modifier.fillMaxWidth(),
-//                    contentAlignment = if (msg.sender == "user") Alignment.CenterEnd else Alignment.CenterStart
-//                ){
-//                    Text(
-//                        msg.message,
-//                        modifier = Modifier.
-//                        background(
-//                            Color.Black,
-//                            shape = if (msg.sender == "user"){
-//                                RoundedCornerShape(topStart = 12.dp, topEnd = 0.dp, bottomEnd = 12.dp, bottomStart = 12.dp)
-//                            } else
-//                                RoundedCornerShape(topStart = 0.dp, topEnd = 12.dp, bottomEnd = 12.dp, bottomStart = 12.dp)
-//                        )
-//                            .padding(12.dp)
-//                            .widthIn(max = 250.dp),
-//                        color = Color.White
-//                    )
-//                }
-//                Spacer(modifier = Modifier.height(8.dp))
-//            }
-//        }
-//
-//        Row(Modifier.padding(top = 8.dp, bottom = 8.dp, start = 0.dp, end = 0.dp)) {
-//            OutlinedTextField(
-//                value = inputText,
-//                onValueChange = { inputText = it },
-//                placeholder = { Text("Tulis pesan...") },
-//                modifier = Modifier.weight(1f),
-//                colors = TextFieldDefaults.colors(Color.Black),
-//                shape = RoundedCornerShape(12.dp),
-//            )
-//            Spacer(Modifier.width(8.dp))
-//            Button(onClick = {
-//                if (inputText.isNotBlank()) {
-//                    val currentText = inputText
-//                    inputText = ""
-//                    scope.launch {
-//                        val userMessage = ChatMessage("user", currentText)
-//                        chatHistory = chatHistory + userMessage
-//
-//                        if (containsSadKeyword(currentText)) {
-//                          val reply =  "Saya mendengar kamu sedang merasa sedih. " +
-//                                    "Tidak apa-apa untuk merasakan itu. " +
-//                                    "Saya menyarankan kamu untuk berbicara dengan seorang psikolog " +
-//                                    "agar mendapatkan dukungan lebih lanjut. 💙"
-//
-//                            chatHistory = chatHistory + ChatMessage("bot", reply)
-//                        } else {
-//                            chatViewModel.sendMessage(userMood, currentText) { reply ->
-//                                chatHistory = chatHistory + ChatMessage("bot", reply)
-//                            }
-//                        }
-//                    }
-//                }
-//            },
-//                colors = ButtonDefaults.buttonColors(Color.Black)
-//            ) {
-//                Text("Kirim")
-//            }
-//        }

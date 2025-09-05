@@ -34,12 +34,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.jeda.R
+import com.example.jeda.data.gemini.ViewModel.ChatViewModel
 import com.example.jeda.ui.theme.localFontFamily
 
 @Composable
 fun MoodScreen(
     navController: NavController,
-    onMoodSelected: (String) -> Unit
+    chatViewModel: ChatViewModel
 ) {
     val moods = listOf(
         "Sangat buruk" to "😵",
@@ -108,8 +109,11 @@ fun MoodScreen(
         Button(
             modifier = Modifier.fillMaxWidth().height(48.dp),
             onClick = {
-//                selectedMood?.let { onMoodSelected(it) }
-                navController.navigate("BotScreen") },
+                selectedMood?.let {
+                    chatViewModel.updateUserMood(it)
+                navController.navigate("BotScreen")
+                }
+              },
             enabled = selectedMood != null,
             colors = ButtonDefaults.buttonColors(
                 containerColor = if (selectedMood != null) Color.Black else Color.Gray

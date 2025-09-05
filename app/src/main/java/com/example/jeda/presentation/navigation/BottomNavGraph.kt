@@ -43,17 +43,14 @@ fun BottomNavGraph(
         composable("onBoardingBot1"){
             onBoardingBot1( navController)
         }
-        composable("BotScreen"){ backStack ->
-//            val mood = backStack.arguments?.getString("mood") ?: "Netral"
+        composable("BotScreen"){
             BotScreen(
                 navController,
-//                userMood = mood,
                 chatViewModel
             )
         }
         composable("MoodScreen"){
-            MoodScreen(navController){ mood ->
-                navController.navigate("chat/$mood")}
+            MoodScreen(navController, chatViewModel)
         }
     }
 }
