@@ -30,7 +30,7 @@ fun BottomNavGraph(
         startDestination = BottomBar.Home.route
     ){
         composable(route = BottomBar.Home.route){
-            HomeScreen( navController, authViewModel)
+            HomeScreen( navController)
         }
         composable(route = BottomBar.Bot.route){
             onBoardingBot1( navController)
@@ -46,7 +46,7 @@ fun BottomNavGraph(
             InsertNotesScreen(navController, id)
         }
         composable(route = BottomBar.User.route){
-            UserScreen( navController)
+            UserScreen(navController, authViewModel)
         }
         composable("onBoardingBot1"){
             onBoardingBot1( navController)

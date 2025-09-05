@@ -45,16 +45,7 @@ import com.example.jeda.ui.theme.localFontFamily
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navController: NavController,
-    authViewModel: AuthViewModel) {
-    val authState = authViewModel.authState.observeAsState()
-
-    LaunchedEffect(authState.value) {
-        when(authState.value){
-            is AuthState.Unauthenticated -> navController.navigate("LoginScreen")
-            else -> Unit
-        }
-    }
+    navController: NavController) {
 
     Scaffold(
         topBar = {
@@ -281,18 +272,3 @@ fun HomeScreen(
         }
     }
 }
-
-//Column(
-//modifier = Modifier.fillMaxSize(),
-//verticalArrangement = Arrangement.Center,
-//horizontalAlignment = Alignment.CenterHorizontally
-//) {
-//    Text("Home Screen", fontFamily = localFontFamily, fontWeight = FontWeight.Normal, fontSize = 20.sp)
-//
-//    TextButton(
-//        onClick = {
-//            authViewModel.signout()
-//        }) {
-//        Text("Sign Out")
-//    }
-//}
