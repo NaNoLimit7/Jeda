@@ -24,7 +24,7 @@ sealed class BottomBar(
     )
 
     object Journal: BottomBar(
-        route = "JorunalScreen",
+        route = "JournalScreen",
         title = "Journal",
         icon = R.drawable.notepad_icon,
         icon_focused = R.drawable.notepad_black

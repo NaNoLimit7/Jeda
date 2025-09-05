@@ -53,13 +53,17 @@ fun SplashScreen(navController: NavController, authViewModel: AuthViewModel) {
                     "Logging in...",
                     Toast.LENGTH_SHORT
                 ).show()
-                navController.navigate("MainBottomNav")
+                navController.navigate("MainBottomNav"){
+                    popUpTo("SplashScreen"){
+                        inclusive = true
+                    }
+                }
             }
             is AuthState.Error -> Toast.makeText(
                 context,
                 (authState.value as AuthState.Error).message, Toast.LENGTH_SHORT
             ).show()
-            else -> navController.navigate("onBoarding1")
+            else -> navController.navigate("onBoarding1"){ popUpTo("SplashScreen") { inclusive = true  }}
         }
 
     }

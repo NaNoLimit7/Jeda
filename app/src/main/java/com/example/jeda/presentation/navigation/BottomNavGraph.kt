@@ -11,6 +11,7 @@ import com.example.jeda.data.gemini.ViewModel.ChatViewModel
 import com.example.jeda.presentation.data.BottomBar
 import com.example.jeda.presentation.home.BotScreen
 import com.example.jeda.presentation.home.HomeScreen
+import com.example.jeda.presentation.home.InsertNotesScreen
 import com.example.jeda.presentation.home.JournalScreen
 import com.example.jeda.presentation.home.MoodScreen
 import com.example.jeda.presentation.home.UserScreen
@@ -36,6 +37,13 @@ fun BottomNavGraph(
         }
         composable(route = BottomBar.Journal.route){
             JournalScreen( navController)
+        }
+        composable("JournalScreen"){
+            JournalScreen( navController)
+        }
+        composable("InsertNotesScreen" + "/{id}"){
+            val id = it.arguments?.getString("id")
+            InsertNotesScreen(navController, id)
         }
         composable(route = BottomBar.User.route){
             UserScreen( navController)

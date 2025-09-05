@@ -49,7 +49,7 @@ fun MainBottomNav(navController: NavController, authViewModel: AuthViewModel, ch
     Scaffold(
         containerColor = Color(0xFF853CFF),
         bottomBar = {
-            if (currentDestination !in listOf("onBoardingBot1", "MoodScreen","BotScreen")) {
+            if (currentDestination !in listOf("onBoardingBot1", "MoodScreen","BotScreen","JournalScreen","InsertNotesScreen" + "/{id}")) {
                 BottomNavBar(navController)
             }}
     ) { innerPadding ->
